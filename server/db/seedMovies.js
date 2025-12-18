@@ -1,7 +1,7 @@
 import pool from '../config.database.js'
 import dotenv from 'dotenv';
 
-dontenv.config();
+dotenv.config();
 
 const movies = [
   {
