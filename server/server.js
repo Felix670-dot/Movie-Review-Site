@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import reviewRoutes from './routes/review.js';
+import movieRoutes from './routes/movie.js';
 
 dotenv.config();
 
@@ -14,8 +16,8 @@ app.use(express.json());
 //app.use(express.static('client/dist'))
 
 // Routes
-//app.use('/api/movies', movieRoutes);
-//app.use('/api/reviews', reviewRoutes);
+app.use('/api/movies', movieRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 
 app.get('/', (req, res) => { 

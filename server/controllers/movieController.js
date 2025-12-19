@@ -37,7 +37,7 @@ export const createMovie = async (req, res) => {
             return res.status(400).json({error: 'Missing requeired field: title, description, release_year, poster_url.'})
         }
 
-        const movie = await createMovieInDB([title, description, release_year, poster_url])
+        const movie = await createMovieInDB({title, description, release_year, poster_url})
         res.status(201).json(movie)
     } catch (error) {
         console.log("Database Error: ", error.message);

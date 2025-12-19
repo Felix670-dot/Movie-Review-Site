@@ -1,16 +1,14 @@
 import pool from '../config/database.js';
 
-export const getReviewsByMovieId = async (movieId) => {
-  const result = await pool.query(`
-    SELECT *
-    FROM reviews
-    WHERE movie_id = $1
-    ORDER BY created_at DESC
-  `, [movieId]);
+export const getReviewsByMovieIdFromDB = async (movieId) => {
+  const result = await pool.query(
+    `SELECT * FROM reviews WHERE movie_id = $1 ORDER BY created_at DESC`,
+    [movieId]
+  );
   return result.rows;
 };
 
-export const getReviewById = async (id) => {
+export const getReviewByIdFromDB = async (id) => {
   const result = await pool.query(
     'SELECT * FROM reviews WHERE id = $1',
     [id]
@@ -18,7 +16,7 @@ export const getReviewById = async (id) => {
   return result.rows[0];
 };
 
-export const createReview = async ({ movie_id, reviewer_name, rating, review_text }) => {
+export const createReviewInDB = async ({ movie_id, reviewer_name, rating, review_text }) => {
   const result = await pool.query(
     `INSERT INTO reviews (movie_id, reviewer_name, rating, review_text)
      VALUES ($1, $2, $3, $4)
@@ -28,7 +26,7 @@ export const createReview = async ({ movie_id, reviewer_name, rating, review_tex
   return result.rows[0];
 };
 
-export const updateReview = async (id, { reviewer_name, rating, review_text }) => {
+export const updateReviewInDB = async (id, { reviewer_name, rating, review_text }) => {
   const updates = [];
   const values = [];
   let paramCount = 1;
@@ -47,7 +45,7 @@ export const updateReview = async (id, { reviewer_name, rating, review_text }) =
   }
 
   if (updates.length === 0) {
-    return await getReviewById(id);
+    return await getReviewByIdFromDB(id);
   }
 
   updates.push(`updated_at = CURRENT_TIMESTAMP`);
@@ -63,7 +61,7 @@ export const updateReview = async (id, { reviewer_name, rating, review_text }) =
   return result.rows[0];
 };
 
-export const deleteReview = async (id) => {
+export const deleteReviewFromDB = async (id) => {
   const result = await pool.query(
     'DELETE FROM reviews WHERE id = $1 RETURNING id',
     [id]
@@ -71,7 +69,7 @@ export const deleteReview = async (id) => {
   return result.rows[0];
 };
 
-export const getMovieRatingStats = async (movieId) => {
+export const getMovieRatingStatsFromDB = async (movieId) => {
   const result = await pool.query(`
     SELECT 
       COALESCE(COUNT(*), 0) as review_count,

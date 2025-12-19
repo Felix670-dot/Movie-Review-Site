@@ -1,4 +1,4 @@
-import pool from '..database.js';
+import pool from '../config/database.js';
 
 export const getAllMoviesFromDB = async () => {
     const result = await pool.query('SELECT * FROM movies ORDER BY title DESC, id DESC');
@@ -42,7 +42,7 @@ export const updateMovieInDB = async (id, {title, description, release_year, pos
     }
     if(poster_url !== undefined){
         updates.push(`poster_url = $${paramCount++}`);
-        values.push(title);
+        values.push(poster_url);
     }
     if (values.length == 0){
         return await getMovieByIdFromDB(id);
@@ -52,7 +52,7 @@ export const updateMovieInDB = async (id, {title, description, release_year, pos
     const result = await pool.query(
         `UPDATE movies 
         SET ${updates.join(', ')}
-        WHERE is = $${paramCount}
+        WHERE id = $${paramCount}
         RETURNING *`,
         values
     );
@@ -61,7 +61,7 @@ export const updateMovieInDB = async (id, {title, description, release_year, pos
 
 export const deleteMovieFromDB = async (id) => {
     const result = await pool.query(
-        'DELETE FROM moviess WHERE id = $1 RETURNING *',
+        'DELETE FROM movies WHERE id = $1 RETURNING *',
         [id]
     );
     return result.rows[0];
