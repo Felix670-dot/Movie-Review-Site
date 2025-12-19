@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import reviewRoutes from './routes/review.js';
-import movieRoutes from './routes/movie.js';
+import reviewRoutes from './routes/reviews.js';
+import movieRoutes from './routes/movies.js';
 
 dotenv.config();
 

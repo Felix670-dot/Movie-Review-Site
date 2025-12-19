@@ -29,7 +29,7 @@ export const updateMovieInDB = async (id, {title, description, release_year, pos
     let paramCount = 1;
 
     if (title !== undefined){
-        updates.push(`description = $${paramCount++}`);
+        updates.push(`title = $${paramCount++}`);
         values.push(title);
     }
     if (description !== undefined){
