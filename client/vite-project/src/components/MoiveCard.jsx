@@ -19,7 +19,7 @@ const MovieCard = ({ movie }) => {
                 <p className="movie-card-year">{movie.release_year}</p>
 
                 <div classname="movie-card-rating">
-                    <span className="rating-value">* {averageRating}</span>
+                    <span className="rating-value">⭐{averageRating}</span>
                     {reviewCount > 0 && (
                         <span className="review-count">({reviewCount} {reviewCount === 1 ? 'review' : 'reviews'})</span>
                     )}
