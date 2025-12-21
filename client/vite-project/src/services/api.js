@@ -1,4 +1,4 @@
-import acios from 'axios';
+import axios from 'axios';
 
 const API_BASE_ULE = import.meta.env.VITE_API || 'http://localhost:5000';
 
