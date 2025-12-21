@@ -5,7 +5,7 @@ import {
     updateReviewInDB,
     deleteReviewFromDB,
     getMovieRatingStatsFromDB
-} from "../models/reviewModel";
+} from "../models/reviewModel.js";
 
 export const getReviewsById = async (req, res) => {
     try {
@@ -13,7 +13,7 @@ export const getReviewsById = async (req, res) => {
         const reviews = await getReviewsByMovieIdFromDB(id);
 
         if (!reviews || reviews.length == 0){
-            return res.status(404).json({error: 'Reviews not found.'})
+            return res.json([]);
         }
 
         res.json(reviews);

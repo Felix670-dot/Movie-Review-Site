@@ -4,7 +4,7 @@ import {
     createMovieInDB,
     deleteMovieFromDB,
     updateMovieInDB,
-} from "../models/movieModel";
+} from "../models/movieModel.js";
 
 export const getAllMovies = async (_req, res) => {
     try{

@@ -1,4 +1,4 @@
-import pool from '../config.database.js'
+import pool from '../config/database.js'
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -38,15 +38,15 @@ const movies = [
 
 const seedMovies = async () => {
     try{
-        await pool.query('TRUNCATE TABLE movie RESTART IDENTITY CASCADE');
-        for(const movie in movies){
-            pool.query(
+        await pool.query('TRUNCATE TABLE movies RESTART IDENTITY CASCADE');
+        for(const movie of movies){
+            await pool.query(
                 'INSERT INTO movies (title, description, release_year, poster_url) VALUES ($1, $2, $3, $4)',
                  [movie.title, movie.description, movie.release_year, movie.poster_url]
             );
-            console.log('Inserted: ${movie.title}');
+            console.log(`Inserted: ${movie.title}`);
         }
-        console.log('Succeded seed ${movies.length} movies')
+        console.log(`Succeded seed ${movies.length} movies`)
     }
     catch (err){
         console.error('Error loading movie seeds', err)
@@ -57,4 +57,4 @@ const seedMovies = async () => {
     }
 }
 
-export default seedMovies;
+seedMovies();

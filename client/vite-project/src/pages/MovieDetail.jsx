@@ -12,7 +12,7 @@ const MovieDetail = () => {
     const [loading, setloading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect((id) => {
+    useEffect(() => {
         const fetchMovieReviews = async () => {
             try{
                 setloading(true);
@@ -22,7 +22,8 @@ const MovieDetail = () => {
                 setReviews(reviewsData);
                 setError(null);
             } catch (error) {
-                setError('Failed to load movie and reviews');
+                const errorMessage = error.response?.data?.error || error.message || 'Failed to load movie and reviews';
+                setError(errorMessage);
                 console.error('Error fetching movie and reviews: ', error);
             } finally {
                 setloading(false);
