@@ -31,7 +31,7 @@ export const getMovieById = async (id) => {
 
 export const getMovieReviews = async (id) => {
     try {
-        const response = await api.get(`/api/reviews/movir/${id}`);
+        const response = await api.get(`/api/reviews/movie/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching movie Reviews: ', error);
