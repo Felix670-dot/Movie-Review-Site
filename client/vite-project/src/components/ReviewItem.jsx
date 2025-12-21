@@ -1,8 +1,6 @@
-const ReviewItem = ({ review }) => {
-    const renderStars = (rating) => {
-        return '⭐'.repeat(rating);
-    };
+import StarRating from "./StarRating";
 
+const ReviewItem = ({ review }) => {
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', { 
@@ -18,7 +16,7 @@ const ReviewItem = ({ review }) => {
                 <div className="reviewer-info">
                     <h3 className="reviewer-name">{review.reviewer_name}</h3>
                     <div className="review-rating">
-                        {renderStars(review.rating)}
+                        <StarRating rating={review.rating} />
                     </div>
                 </div>
                 <span className="review-date">

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getMovieById, getMovieReviews } from '../services/api';
 import { useParams } from 'react-router-dom';
 import ReviewList from '../components/ReviewList';
+import StarRating from '../components/StarRating';
 
 
 const MovieDetail = () => {
@@ -66,6 +67,7 @@ const MovieDetail = () => {
                 <div className="movie-details">
                     <h1>{movie.title}</h1>
                     <p className="release-year">{movie.release_year}</p>
+                    <StarRating rating={movie.average_rating} showNumber={true} size='large' />
                     <p className="description">{movie.description}</p>
                 </div>
             </div>

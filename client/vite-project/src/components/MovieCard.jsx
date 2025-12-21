@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import StarRating from './StarRating';
 // import './Moviecard.css';
 
 
@@ -19,7 +20,7 @@ const MovieCard = ({ movie }) => {
                 <p className="movie-card-year">{movie.release_year}</p>
 
                 <div classname="movie-card-rating">
-                    <span className="rating-value">⭐{averageRating}</span>
+                    <StarRating rating={movie.average_rating} showNumber={true} />
                     {reviewCount > 0 && (
                         <span className="review-count">({reviewCount} {reviewCount === 1 ? 'review' : 'reviews'})</span>
                     )}
