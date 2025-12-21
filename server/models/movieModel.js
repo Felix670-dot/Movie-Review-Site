@@ -1,7 +1,16 @@
 import pool from '../config/database.js';
 
 export const getAllMoviesFromDB = async () => {
-    const result = await pool.query('SELECT * FROM movies ORDER BY title DESC, id DESC');
+    const result = await pool.query(
+        `SELECT 
+            m.*,
+            COALESCE(COUNT(r.id), 0) as review_count,
+            COALESCE(AVG(r.rating), 0) as average_rating
+        FROM movies m
+        LEFT JOIN reviews r ON m.id = r.movie_id
+        GROUP BY m.id
+        ORDER BY m.title DESC, m.id DESC
+    `);
     return result.rows;
 };
 
