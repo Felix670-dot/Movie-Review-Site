@@ -1,38 +1,55 @@
 import { useState, useEffect } from 'react';
-import { getMovieById, getMovieReviews } from '../services/api';
+import { getMovieById, getMovieReviews, createReview } from '../services/api';
 import { useParams } from 'react-router-dom';
 import ReviewList from '../components/ReviewList';
 import StarRating from '../components/StarRating';
-
+import ReviewForm from '../components/ReviewForm';
+import './MovieDetail.css'; 
 
 const MovieDetail = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [reviews, setReviews] = useState([]);
-    const [loading, setloading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showForm, setShowForm] = useState(false);
+
+    const fetchMovieReviews = async () => {
+        try {
+            const movieData = await getMovieById(id);
+            const reviewsData = await getMovieReviews(id);
+            setMovie(movieData);
+            setReviews(reviewsData || []);
+            setError(null);
+        } catch (error) {
+            const errorMessage = error.response?.data?.error || error.message || 'Failed to load movie and reviews';
+            setError(errorMessage);
+            console.error('Error fetching movie and reviews: ', error);
+        }
+    };
 
     useEffect(() => {
-        const fetchMovieReviews = async () => {
-            try{
-                setloading(true);
-                const movieData = await getMovieById(id);
-                const reviewsData = await getMovieReviews(id);
-                setMovie(movieData);
-                setReviews(reviewsData);
-                setError(null);
-            } catch (error) {
-                const errorMessage = error.response?.data?.error || error.message || 'Failed to load movie and reviews';
-                setError(errorMessage);
-                console.error('Error fetching movie and reviews: ', error);
-            } finally {
-                setloading(false);
-            }
+        const loadData = async () => {
+            setLoading(true);
+            await fetchMovieReviews();
+            setLoading(false);
         };
-        if(id){
-            fetchMovieReviews();
+        if (id) {
+            loadData();
         }
     }, [id]);
+
+    const handleReviewSubmit = async (reviewData) => {
+        try {
+            await createReview(id, reviewData);
+            // Refresh reviews after successful submission
+            const reviewsData = await getMovieReviews(id);
+            setReviews(reviewsData || []);
+            setShowForm(false);
+        } catch (error) {
+            throw error; // Let ReviewForm handle the error display
+        }
+    };
 
     if (loading) {
         return (
@@ -43,7 +60,7 @@ const MovieDetail = () => {
         );
     }
 
-    if (error) {
+    if (error && !movie) {
         return (
             <div className="movie-detail">
                 <h1>Movie Review</h1>
@@ -72,10 +89,22 @@ const MovieDetail = () => {
                     <p className="description">{movie.description}</p>
                 </div>
             </div>
+            
+            {!showForm ? (
+                <button onClick={() => setShowForm(true)} className="write-review-btn">
+                    Write a Review
+                </button>
+            ) : (
+                <ReviewForm 
+                    movieId={id} 
+                    onSubmit={handleReviewSubmit}
+                    onCancel={() => setShowForm(false)}
+                />
+            )}
+            
             <ReviewList reviews={reviews} />
         </div>
     );
-
 };
 
 export default MovieDetail;

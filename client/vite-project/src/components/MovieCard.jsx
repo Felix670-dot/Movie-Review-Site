@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import StarRating from './StarRating';
-// import './Moviecard.css';
+import './Moviecard.css';
 
 
 const MovieCard = ({ movie }) => {

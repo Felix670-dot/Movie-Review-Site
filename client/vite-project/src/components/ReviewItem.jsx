@@ -1,4 +1,5 @@
 import StarRating from "./StarRating";
+import './ReviewItem.css';
 
 const ReviewItem = ({ review }) => {
     const formatDate = (dateString) => {

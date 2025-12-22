@@ -38,3 +38,18 @@ export const getMovieReviews = async (id) => {
         throw error;
     }
 };
+
+export const createReview = async (movieId, reviewData) => {
+    try {
+        const response = await api.post(`/api/reviews`, {
+            movie_id: movieId,
+            reviewer_name: reviewData.reviewer_name,
+            rating: reviewData.rating,
+            review_text: reviewData.review_text
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error creating review: ', error.response?.data || error.message);
+        throw error;
+    }
+};

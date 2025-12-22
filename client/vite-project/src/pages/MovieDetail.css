@@ -1,0 +1,47 @@
+/* Container for the poster and details */
+.movie-info {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Constrain the large image */
+.movie-info img {
+    width: 300px; /* Specific width for the detail page */
+    height: 450px; /* Maintain 2:3 ratio */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Prevents the image from being squished by text */
+}
+
+/* Style the text column */
+.movie-details {
+    flex: 1;
+}
+
+.movie-details h1 {
+    margin-top: 0;
+    font-size: 2.5rem;
+}
+
+.description {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Mobile Responsive: Stack them vertically on small screens */
+@media (max-width: 768px) {
+    .movie-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .movie-info img {
+        width: 250px;
+        height: auto;
+    }
+}

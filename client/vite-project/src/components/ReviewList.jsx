@@ -1,4 +1,5 @@
 import ReviewItem from './ReviewItem';
+import './ReviewList.css';
 
 const ReviewList = ({ reviews }) => {
     if (!reviews || reviews.length === 0) {

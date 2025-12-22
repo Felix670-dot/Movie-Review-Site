@@ -1,0 +1,44 @@
+.review-item {
+    background: #242424; /* Slightly lighter than the main background */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.reviewer-name {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #f3ce13; /* Gold accent for the name */
+    font-weight: 600;
+}
+
+.review-rating {
+    margin-top: 4px;
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.review-text {
+    margin: 0;
+    line-height: 1.6;
+    color: #e0e0e0;
+    font-size: 1rem;
+    white-space: pre-wrap; /* Preserves line breaks from the textarea */
+}
+
+/* Hover effect to make it feel interactive */
+.review-item:hover {
+    background: #2a2a2a;
+    border-color: #444;
+}

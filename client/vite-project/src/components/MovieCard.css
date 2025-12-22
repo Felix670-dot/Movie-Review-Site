@@ -1,0 +1,25 @@
+/* 1. Constrain the entire card width */
+.movie-card {
+    width: 200px; /* Adjust this number to your preferred size */
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+/* 2. Constrain the Poster Image */
+.movie-card-poster {
+    width: 100%;
+    height: 300px; /* Fixed height is key to keeping images from being "too big" */
+    overflow: hidden;
+}
+
+.movie-card-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This prevents the image from stretching/squishing */
+    display: block;
+}

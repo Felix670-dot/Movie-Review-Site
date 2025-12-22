@@ -8,31 +8,31 @@ const movies = [
     title: "The Shawshank Redemption",
     description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
     release_year: 1994,
-    poster_url: null
+    poster_url: "https://m.media-amazon.com/images/I/71AzwgLT2WL._AC_UF894,1000_QL80_.jpg"
   },
   {
     title: "Parasite",
     description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
     release_year: 2019,
-    poster_url: null
+    poster_url: "https://image.tmdb.org/t/p/original/9PSifrJfKl8sy9tBOd5Vcg0jbN6.jpg"
   },
   {
     title: "The Dark Knight",
     description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
     release_year: 2008,
-    poster_url: null
+    poster_url: "https://filmartgallery.com/cdn/shop/files/The-Dark-Knight-Vintage-Movie-Poster-Original_51aa2163.jpg?v=1741715850"
   },
   {
     title: "Spider-Man: Into the Spider-Verse",
     description: "Teen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
     release_year: 2018,
-    poster_url: null
+    poster_url: "https://m.media-amazon.com/images/I/71q1TyEFjpL.jpg"
   },
   {
     title: "Pulp Fiction",
     description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     release_year: 1994,
-    poster_url: null
+    poster_url: "https://filmartgallery.com/cdn/shop/products/Pulp-Fiction-Vintage-Movie-Poster-Original.jpg?v=1738902411"
   }
 ];
 

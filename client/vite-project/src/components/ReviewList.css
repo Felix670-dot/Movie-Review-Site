@@ -1,0 +1,30 @@
+.review-list {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #333; /* Separates reviews from the movie info */
+}
+
+.review-list h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Styling for the 'No reviews' message */
+.review-list p {
+    color: #888;
+    font-style: italic;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds space between individual ReviewItems */
+}

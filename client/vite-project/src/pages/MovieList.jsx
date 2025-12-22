@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAllMovies } from '../services/api';
 import MovieCard from '../components/MovieCard';
+import './MovieList.css';
 
 
 const MovieList = () => {
