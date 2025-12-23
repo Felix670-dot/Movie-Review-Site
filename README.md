@@ -67,4 +67,4 @@ Some notes:
 * Overall what i've learned is the structure of the server files, connection to each other, and the communication with the frontend.
 * I did attempt to deploy this on vercel but was unsuccesful. It should still work locally. 
 
-Link to site (not working):
+Link to site (not working): https://movie-review-app-cyan-three.vercel.app/
