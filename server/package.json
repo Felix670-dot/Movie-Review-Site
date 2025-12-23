@@ -8,7 +8,7 @@
     "seed": "node db/seedMovies.js",
     "start": "node server.js",
     "dev": "node server.js",
-    "postinstall": "cd ../client && npm install && npm run build"
+    "postinstall": "cd ../client/vite-project && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
