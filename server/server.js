@@ -3,9 +3,13 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import reviewRoutes from './routes/reviews.js';
 import movieRoutes from './routes/movies.js';
-//import path from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,7 +20,11 @@ app.use(express.json());
 
 // Serve the static files from the client
 app.use(express.static('client/vite-project/dist'))
-// app.use(express.static(Path.join(__dirname,'client/dist')))
+app.use(express.static(path.join(__dirname,'client/vite-project/dist')))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/vite-project/dist/index.html'));
+});
+
 
 
 // Routes
