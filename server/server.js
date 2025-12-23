@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import reviewRoutes from './routes/reviews.js';
 import movieRoutes from './routes/movies.js';
+//import path from 'path';
 
 dotenv.config();
 
@@ -13,7 +14,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-//app.use(express.static('client/dist'))
+// Serve the static files from the client
+app.use(express.static('client/dist'))
+// app.use(express.static(Path.join(__dirname,'client/dist')))
+
 
 // Routes
 app.use('/api/movies', movieRoutes);
