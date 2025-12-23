@@ -3,14 +3,12 @@
     "builds": [
       {
         "src": "server/server.js",
-        "use": "@vercel/node"
+        "use": "@vercel/node",
+        "config": { "includeFiles": ["client/vite-project/dist/**"] }
       }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-          "dest": "server/server.js"
-      }
-    ],
-    "buildCommand": "npm install --prefix server && npm install --prefix client/vite-project && npm run build --prefix client/vite-project"
+      { "src": "/api/(.*)", "dest": "server/server.js" },
+      { "src": "/(.*)", "dest": "server/server.js" }
+    ]
   }
