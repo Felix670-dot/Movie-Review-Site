@@ -4,15 +4,19 @@ A full-stack movie Review application built with React, Node.js, and PostrgreSQL
 ##
 
 ### Tech Stack
-Frontend:
-* React.js
-* React Router
+**Frontend**
+* **React.js**: Component-based UI logic.
 
-Backend:
-* Node.js & Express
-* PostgreSQL
-* CORS
+* **React Router**: For seamless navigation between the List and Detail pages.
 
+* **CSS3:** Custom styles with Flexbox and Grid for a "Cinema" dark-mode theme.
+
+**Backend**
+* **Node.js & Express:** RESTful API to handle movie data and review submissions.
+
+* **PostgreSQL:** Relational database for persistent storage.
+
+* **CORS**: Enabled for secure cross-origin communication.
 ##
 
 Database Structure
@@ -58,3 +62,9 @@ npm start
 npm run dev
 ```
 
+Some notes:
+* I used Cursor AI to help me with pretty much everything. Spot mistakes, typos, correcting my code, adding things I was missing to my code, The styling, etc.
+* Overall what i've learned is the structure of the server files, connection to each other, and the communication with the frontend.
+* I did attempt to deploy this on vercel but was unsuccesful. It should still work locally. 
+
+Link to site (not working):
