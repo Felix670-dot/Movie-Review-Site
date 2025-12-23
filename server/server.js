@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve the static files from the client
-app.use(express.static('client/dist'))
+app.use(express.static('client/vite-project/dist'))
 // app.use(express.static(Path.join(__dirname,'client/dist')))
 
 
